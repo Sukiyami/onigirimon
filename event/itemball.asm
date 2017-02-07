@@ -5,7 +5,7 @@ FindItemInBallScript:: ; 0x122ce
 	opentext
 	writetext .text_found
 	playsound SFX_ITEM
-	pause 60
+	waitsfx
 	itemnotify
 	closetext
 	end

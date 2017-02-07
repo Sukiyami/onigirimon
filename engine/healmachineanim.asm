@@ -98,7 +98,7 @@ HealMachineAnim: ; 12324
 	ld de, SFX_SECOND_PART_OF_ITEMFINDER
 	call PlaySFX
 	pop de
-	ld c, 30
+	ld c, 60
 	call DelayFrames
 	dec b
 	jr nz, .party_loop
@@ -179,7 +179,7 @@ INCBIN "gfx/unknown/0123fc.2bpp"
 .palette_loop
 	push bc
 	call .FlashPalettes
-	ld c, 10
+	ld c, 20
 	call DelayFrames
 	pop bc
 	dec c
