@@ -311,7 +311,7 @@ InitializeNPCNames: ; 5ce9
 	ret
 
 .Rival:  db "???@"
-.Red:    db "RED@"
+.Red:    db "ONIGIRI@"
 .Green:  db "GREEN@"
 .Mom:    db "MOM@"
 ; 5d23

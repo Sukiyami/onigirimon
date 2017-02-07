@@ -37,10 +37,20 @@ InitLanguage:
 	call CloseWindow
 	ld a, [wMenuCursorY]
 	dec a
-	;ld [Red], a
+	cp 1
+	jr z, .Dubbed
 	ld c, 20
 	call DelayFrames
 	ret
+	
+.Dubbed:
+	ld hl, .Donut
+	ld de, RedsName
+	ld bc, NAME_LENGTH
+	call CopyBytes
+	ret
+
+.Donut: db "DONUT@"
 	
 .MenuDataHeader:
 	db $40 ; flags
