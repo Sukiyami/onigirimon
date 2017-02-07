@@ -48,14 +48,17 @@ InitLanguage:
 	ld de, RedsName
 	ld bc, NAME_LENGTH
 	call CopyBytes
+	ld de, ENGINE_DUBBED
+	ld b, SET_FLAG
+	callba EngineFlagAction
 	ret
 
 .Donut: db "DONUT@"
 	
 .MenuDataHeader:
 	db $40 ; flags
-	db 04, 06 ; start coords
-	db 09, 14 ; end coords
+	db 04, 05 ; start coords
+	db 09, 13 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 	

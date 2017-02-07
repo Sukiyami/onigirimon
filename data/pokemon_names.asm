@@ -149,7 +149,7 @@
 	db "DRAGONITE@"
 	db "MEWTWO@@@@"
 	db "MEW@@@@@@@"
-	db "CHIKORITA@"
+	db "<RED>@@@@@@@@@"
 	db "BAYLEEF@@@"
 	db "MEGANIUM@@"
 	db "CYNDAQUIL@"
