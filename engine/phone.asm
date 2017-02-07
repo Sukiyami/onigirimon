@@ -607,7 +607,7 @@ HangUp_Wait20Frames: ; 90355
 	jr Phone_Wait20Frames
 
 Phone_Wait20Frames
-	ld c, 20
+	ld c, 40
 	call DelayFrames
 	callba PhoneRing_LoadEDTile
 	ret
