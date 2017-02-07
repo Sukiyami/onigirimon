@@ -1948,7 +1948,7 @@ INCLUDE "engine/mail.asm"
 
 SECTION "Crystal Unique", ROMX, BANK[$12]
 
-INCLUDE "engine/init_gender.asm"
+INCLUDE "engine/init_settings.asm"
 
 DrawKrisPackGFX: ; 48e81
 	ld hl, PackFGFXPointers

@@ -13,6 +13,8 @@ DoubleSpeed:: ; 2fef
 ; 2ff7
 
 NormalSpeed:: ; 2ff7
+	call DoubleSpeed
+	ret
 	ld hl, rKEY1
 	bit 7, [hl]
 	ret z

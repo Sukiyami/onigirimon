@@ -272,7 +272,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	jr z, .dmg
 	ld a, $2
 	ld [hBGMapMode], a
-	ld c, 3
+	ld c, 6
 	call DelayFrames
 .dmg
 	call WaitBGMap

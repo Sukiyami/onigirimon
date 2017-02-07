@@ -15,8 +15,12 @@ DelayFrame:: ; 45a
 
 DelayFrames:: ; 468
 ; Wait c frames
+	srl c
+	jr nz, .loop
+	ld c, 1
+.loop
 	call DelayFrame
 	dec c
-	jr nz, DelayFrames
+	jr nz, .loop
 	ret
 ; 46f
