@@ -71,7 +71,7 @@ NewGame: ; 5b6b
 	ld [wMonStatusFlags], a
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
-	; call AreYouABoyOrAreYouAGirl
+	call PlayInSubbedOrPlayInDubbed
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
@@ -85,10 +85,10 @@ NewGame: ; 5b6b
 	jp FinishContinueFunction
 ; 5b8f
 
-AreYouABoyOrAreYouAGirl: ; 5b8f
+PlayInSubbedOrPlayInDubbed: ; 5b8f
 	callba Mobile_AlwaysReturnNotCarry ; some mobile stuff
 	jr c, .ok
-	callba InitGender
+	callba InitLanguage
 	ret
 
 .ok
@@ -311,7 +311,7 @@ InitializeNPCNames: ; 5ce9
 	ret
 
 .Rival:  db "???@"
-.Red:    db "RED@"
+.Red:    db "ONIGIRI@"
 .Green:  db "GREEN@"
 .Mom:    db "MOM@"
 ; 5d23

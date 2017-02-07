@@ -90,6 +90,8 @@ NewBarkTownTeacherScript:
 	end
 
 .MonIsAdorable:
+	checkflag ENGINE_DUBBED
+	iftrue .Dubbed
 	writetext Text_YourMonIsAdorable
 	waitbutton
 	closetext
@@ -103,6 +105,12 @@ NewBarkTownTeacherScript:
 
 .CallMom:
 	writetext Text_CallMomOnGear
+	waitbutton
+	closetext
+	end
+	
+.Dubbed
+	writetext Text_YourDonutIsAdorable
 	waitbutton
 	closetext
 	end
@@ -224,6 +232,12 @@ Text_ItsDangerousToGoAlone:
 Text_YourMonIsAdorable:
 	text "Oh! Your #MON"
 	line "is adorable!"
+	cont "I wish I had one!"
+	done
+	
+Text_YourDonutIsAdorable:
+	text "Oh! Your <RED>"
+	line "looks delicious!"
 	cont "I wish I had one!"
 	done
 

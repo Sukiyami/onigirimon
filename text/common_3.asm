@@ -351,6 +351,11 @@ Text_SoYoureABoy::
 Text_SoYoureAGirl::
 	text "So you're a girl?"
 	done
+	
+Text_PlayInSubbedOrDubbed::
+	text "Play in subbed?"
+	line "Or play in dubbed?"
+	done
 
 UnknownText_0x1c0cc6::
 	text "<USER>'s"
