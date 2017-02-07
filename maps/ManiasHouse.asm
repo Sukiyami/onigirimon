@@ -18,8 +18,8 @@ ManiaScript:
 	writetext ManiaText_AskLookAfterShuckle
 	yesorno
 	iffalse .refusetotakeshuckie
-	special SpecialGiveShuckle
-	iffalse .partyfull
+	;special SpecialGiveShuckle
+	;iffalse .partyfull
 	writetext ManiaText_TakeCareOfShuckle
 	buttonsound
 	waitsfx
@@ -54,11 +54,11 @@ ManiaScript:
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
 	iffalse .refused
-	special SpecialReturnShuckle
-	if_equal $0, .wrong
-	if_equal $1, .refused
-	if_equal $3, .superhappy
-	if_equal $4, .default_postevent
+	;special SpecialReturnShuckle
+	;if_equal $0, .wrong
+	;if_equal $1, .refused
+	;if_equal $3, .superhappy
+	;if_equal $4, .default_postevent
 	writetext ManiaText_ThankYou
 	waitbutton
 	closetext

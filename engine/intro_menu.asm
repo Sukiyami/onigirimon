@@ -71,7 +71,7 @@ NewGame: ; 5b6b
 	ld [wMonStatusFlags], a
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
-	call AreYouABoyOrAreYouAGirl
+	; call AreYouABoyOrAreYouAGirl
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
@@ -732,17 +732,12 @@ OakSpeech: ; 0x5f99
 
 	ld hl, OakText5
 	call PrintText
-	call RotateThreePalettesRight
-	call ClearTileMap
-
-	xor a
-	ld [CurPartySpecies], a
-	callba DrawIntroPlayerPic
-
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
-
+	
+	call InitGender
+	
+	ld c, 10
+	call DelayFrames
+	
 	ld hl, OakText6
 	call PrintText
 	call NamePlayer
@@ -781,6 +776,82 @@ OakText6: ; 0x606a
 
 OakText7: ; 0x606f
 	text_jump _OakText7
+	db "@"
+	
+InitGender: ; 48dcb (12:4dcb)
+	call RotateThreePalettesRight
+	call ClearTileMap
+	call WaitBGMap2
+	call SetPalettes
+
+	;call InitIntroGradient
+	;call LoadIntroGradientGFX
+
+	ld hl, AreYouABoyOrAreYouAGirlText
+	call PrintText
+
+	ld hl, .MenuDataHeader
+	call LoadMenuDataHeader
+	call WaitBGMap2
+	call VerticalMenu
+	call CloseWindow
+	ld a, [wMenuCursorY]
+	dec a
+	ld [PlayerGender], a
+
+	call ClearTileMap
+	xor a
+	ld [CurPartySpecies], a
+	farcall DrawIntroPlayerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	;call InitIntroGradient
+	;call LoadIntroGradientGFX
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, SoYoureABoyText
+	ld a, [PlayerGender]
+	and a
+	jr z, .boy
+	ld hl, SoYoureAGirlText
+.boy
+	call PrintText
+
+	call YesNoBox
+	jr c, InitGender
+	ret
+; 48dfc (12:4dfc)
+
+.MenuDataHeader: ; 0x48dfc
+	db $40 ; flags
+	db 7, 13 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+; 0x48e04
+
+.MenuData2: ; 0x48e04
+	db $c1 ; flags
+	db 2 ; items
+	db "Boy@"
+	db "Girl@"
+; 0x48e0f
+
+AreYouABoyOrAreYouAGirlText: ; 0x48e0f
+	; Are you a boy? Or are you a girl?
+	text_jump Text_AreYouABoyOrAreYouAGirl
+	db "@"
+; 0x48e14
+
+SoYoureABoyText:
+	; So you're a boy?
+	text_jump Text_SoYoureABoy
+	db "@"
+
+SoYoureAGirlText:
+	; So you're a girl?
+	text_jump Text_SoYoureAGirl
 	db "@"
 
 NamePlayer: ; 0x6074

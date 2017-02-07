@@ -343,6 +343,14 @@ Text_AreYouABoyOrAreYouAGirl::
 	text "Are you a boy?"
 	line "Or are you a girl?"
 	done
+	
+Text_SoYoureABoy::
+	text "So you're a boy?"
+	done
+
+Text_SoYoureAGirl::
+	text "So you're a girl?"
+	done
 
 UnknownText_0x1c0cc6::
 	text "<USER>'s"
